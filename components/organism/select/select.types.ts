@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Dispatch, SetStateAction } from "react";
 
-export type SelectValue = string | number | boolean | object;
+export type SelectValue = string | number;
 
 export interface SelectOption<T = SelectValue> {
   label: string;

@@ -17,21 +17,21 @@ This project is a small multi-task playground built with **Next.js App Router** 
 **Styling / UI**
 
 - Tailwind CSS (utility classes)
-- Design System tokens in [Design-System/tokens](file:///c:/Users/mandegar/test-1/Design-System/tokens) (`colorTokens`, `typographyTokens`, `spacingTokens`, `radiusTokens`)
+- Design System tokens in [Design-System/tokens](/test-1/Design-System/tokens) (`colorTokens`, `typographyTokens`, `spacingTokens`, `radiusTokens`)
 - Chakra UI (used mainly in the `/Dashboard/*` routes)
 - Headless UI (accessible Listbox for the custom Select)
 - Lucide icons
 
 **Data / State**
 
-- Local JSON dataset for Games: [apiReplaced.json](file:///c:/Users/mandegar/test-1/lib/utils/apiReplaced.json)
+- Local JSON dataset for Games: [apiReplaced.json](/test-1/lib/utils/apiReplaced.json)
 - DummyJSON API client for Dashboard: [dummyjson.ts](file:///c:/Users/mandegar/test-1/lib/api/dummyjson.ts)
 - Axios for HTTP (DummyJSON + optional RAWG client)
 
 **Performance**
 
-- Infinite scroll via `IntersectionObserver`: [useInfiniteScroll.ts](file:///c:/Users/mandegar/test-1/lib/hooks/useInfiniteScroll.ts)
-- List virtualization via `@tanstack/react-virtual` in Select: [select.tsx](file:///c:/Users/mandegar/test-1/components/organism/select/select.tsx)
+- Infinite scroll via `IntersectionObserver`: [useInfiniteScroll.ts](/test-1/lib/hooks/useInfiniteScroll.ts)
+- List virtualization via `@tanstack/react-virtual` in Select: [select.tsx](/test-1/components/organism/select/select.tsx)
 
 **Testing**
 
@@ -51,13 +51,13 @@ This project is a small multi-task playground built with **Next.js App Router** 
 
 The Games task is intentionally **offline-friendly**:
 
-- The main dataset is stored in [apiReplaced.json](file:///c:/Users/mandegar/test-1/lib/utils/apiReplaced.json).
-- The UI loads the first page server-side in [games/page.tsx](file:///c:/Users/mandegar/test-1/app/games/page.tsx).
+- The main dataset is stored in [apiReplaced.json](/test-1/lib/utils/apiReplaced.json).
+- The UI loads the first page server-side in [games/page.tsx](/test-1/app/games/page.tsx).
 - Infinite scroll loads more pages by calling a local API route:
-  - [app/api/games/route.ts](file:///c:/Users/mandegar/test-1/app/api/games/route.ts)
+  - [app/api/games/route.ts](/test-1/app/api/games/route.ts)
   - Supports: `page`, `page_size`, `search`, `genres`, `platforms`
 - The grid + “load next page when last card appears” logic lives in:
-  - [GameGalley.tsx](file:///c:/Users/mandegar/test-1/components/organism/game/GameGalley.tsx)
+  - [GameGalley.tsx](f/test-1/components/organism/game/GameGalley.tsx)
 
 If you change filter query params (e.g. `?search=...&genres=action`), the list resets and starts paginating again.
 
@@ -85,15 +85,15 @@ export function Example() {
 
 Where to look:
 
-- [colors.ts](file:///c:/Users/mandegar/test-1/Design-System/tokens/colors.ts)
-- [typography.ts](file:///c:/Users/mandegar/test-1/Design-System/tokens/typography.ts)
-- [radius.ts](file:///c:/Users/mandegar/test-1/Design-System/tokens/radius.ts)
-- [spacing.ts](file:///c:/Users/mandegar/test-1/Design-System/tokens/spacing.ts)
+- [colors.ts](/test-1/Design-System/tokens/colors.ts)
+- [typography.ts](/test-1/Design-System/tokens/typography.ts)
+- [radius.ts](/test-1/Design-System/tokens/radius.ts)
+- [spacing.ts](/test-1/Design-System/tokens/spacing.ts)
 
 ## Custom cursor
 
-- The custom cursor is rendered globally in [layout.tsx](file:///c:/Users/mandegar/test-1/app/layout.tsx) via [customCursor.tsx](file:///c:/Users/mandegar/test-1/lib/hooks/customCursor.tsx) which i also used in my portfolio.
-- The native cursor is hidden in [globals.css](file:///c:/Users/mandegar/test-1/app/globals.css) (`cursor: none;`).
+- The custom cursor is rendered globally in [layout.tsx](/test-1/app/layout.tsx) via [customCursor.tsx](/test-1/lib/hooks/customCursor.tsx) which i also used in my portfolio.
+- The native cursor is hidden in [globals.css](/test-1/app/globals.css) (`cursor: none;`).
 
 If you want the normal cursor back, remove the `cursor: none;` rule.
 
@@ -133,7 +133,7 @@ npx vitest run     # tests
 Some API utilities expect keys, but the Games task is currently configured to use local JSON.
 
 - `RAWG_API_KEY` (optional)  
-  Used by [rawg.ts](file:///c:/Users/mandegar/test-1/lib/api/rawg.ts) if you ever switch back to RAWG.
+  Used by [rawg.ts](/test-1/lib/api/rawg.ts) if you ever switch back to RAWG.
 
 Create `.env.local`:
 

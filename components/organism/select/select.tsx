@@ -38,8 +38,8 @@ export function Select<T extends string | number | object>({
   value,
   onChange,
 }: SelectProps<T>) {
-  const [internalValue, setInternalValue] = React.useState<T | T[]>(
-    multiple ? ([] as T[]) : ([] as unknown as T),
+  const [internalValue, setInternalValue] = React.useState<T | T[] | undefined>(
+    undefined,
   );
   const selectedValue = value ?? internalValue;
 
@@ -137,7 +137,7 @@ export function Select<T extends string | number | object>({
 
   const selectAll = () => {
     if (!multiple) return;
-    setValue(flatOptions.map((opt) => opt.value) as T[]);
+    flatOptions.filter((opt) => !opt.disabled).map((opt) => opt.value) as T[];
   };
 
   const clearAll = () => {
@@ -145,7 +145,12 @@ export function Select<T extends string | number | object>({
   };
 
   return (
-    <Listbox value={selectedValue} onChange={setValue} multiple={multiple}>
+    <Listbox
+      by="id"
+      value={selectedValue}
+      onChange={setValue}
+      multiple={multiple}
+    >
       {({ open }) => (
         <div className="relative w-full">
           <Listbox.Button
