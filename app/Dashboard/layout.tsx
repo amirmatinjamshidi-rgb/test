@@ -43,6 +43,11 @@ export default function DashboardLayout({
     return (
       <Providers>
         <Box minH="100vh" bg="bg.canvas">
+          <Box px={4} pt={4}>
+            <Link href="/" color="cyan.600" _hover={{ textDecoration: "underline" }} fontSize="sm">
+              ← Back to main menu
+            </Link>
+          </Box>
           {children}
         </Box>
       </Providers>
@@ -75,6 +80,18 @@ export default function DashboardLayout({
             </HStack>
 
             <Stack gap={1} flex={1}>
+              <Link
+                href="/"
+                px={3}
+                py={2}
+                borderRadius="md"
+                color="fg.muted"
+                _hover={{ bg: "gray.100", color: "fg.default" }}
+                fontSize="sm"
+                style={{ textDecoration: "none" }}
+              >
+                ← Back to main menu
+              </Link>
               {NAV_ITEMS.map((item) => {
                 const isActive = pathname === item.href;
                 return (
@@ -146,7 +163,10 @@ export default function DashboardLayout({
             borderBottomWidth="1px"
             justify="space-between"
           >
-            <HStack gap={3}>
+            <HStack gap={3} flex={1}>
+              <Link href="/" fontSize="sm" color="cyan.600" _hover={{ textDecoration: "underline" }} style={{ textDecoration: "none" }}>
+                ← Main menu
+              </Link>
               <Icon as={LayoutDashboard} color="cyan.600" boxSize={6} />
               <Text fontWeight="bold" color="fg.warning">
                 Admin Dash

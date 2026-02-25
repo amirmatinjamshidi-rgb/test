@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import Link from "next/link";
 import { Badge } from "@/components/atom/badge";
 import Image from "next/image";
 import { Star, Calendar, Globe } from "lucide-react";
@@ -20,6 +21,12 @@ export default async function GameDetailPage({
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="relative h-[65vh] w-full">
+        <Link
+          href="/"
+          className="absolute top-6 left-6 z-10 text-sm text-cyan-400 hover:underline"
+        >
+          ← Back to main menu
+        </Link>
         <Image
           src={game.background_image}
           alt={game.name}
