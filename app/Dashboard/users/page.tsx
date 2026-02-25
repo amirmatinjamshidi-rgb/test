@@ -48,6 +48,8 @@ export default function UsersPage() {
           <form onSubmit={handleSearch}>
             <HStack>
               <Input
+                color="white"
+                bg="gray.800"
                 placeholder="Search users..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}

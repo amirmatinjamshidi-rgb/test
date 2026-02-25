@@ -35,7 +35,7 @@ export default function LoginPage() {
       console.error("Login failed", err);
       setError(
         err.response?.data?.message ||
-          "Login failed. Please check your username or password.",
+        "Login failed. Please check your username or password.",
       );
     } finally {
       setIsLoading(false);
@@ -71,6 +71,8 @@ export default function LoginPage() {
                 <Field.Root>
                   <Field.Label>Username</Field.Label>
                   <Input
+                    color="white"
+                    bg="gray.800"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder="Enter your username"
@@ -80,6 +82,8 @@ export default function LoginPage() {
                   <Field.Label>Password</Field.Label>
                   <Input
                     type="password"
+                    color="white"
+                    bg="gray.800"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter your password"

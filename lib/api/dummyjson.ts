@@ -99,6 +99,18 @@ export const productsApi = {
     const response = await dummyjsonApi.get(`/products/${id}`);
     return response.data;
   },
+  create: async (data: Partial<Product>): Promise<Product> => {
+    const response = await dummyjsonApi.post("/products/add", data);
+    return response.data;
+  },
+  update: async (id: number, data: Partial<Product>): Promise<Product> => {
+    const response = await dummyjsonApi.put(`/products/${id}`, data);
+    return response.data;
+  },
+  delete: async (id: number): Promise<Product & { isDeleted?: boolean }> => {
+    const response = await dummyjsonApi.delete(`/products/${id}`);
+    return response.data;
+  },
 };
 
 export const usersApi = {
@@ -113,6 +125,18 @@ export const usersApi = {
   },
   getById: async (id: number): Promise<User> => {
     const response = await dummyjsonApi.get(`/users/${id}`);
+    return response.data;
+  },
+  create: async (data: Partial<User>): Promise<User> => {
+    const response = await dummyjsonApi.post("/users/add", data);
+    return response.data;
+  },
+  update: async (id: number, data: Partial<User>): Promise<User> => {
+    const response = await dummyjsonApi.put(`/users/${id}`, data);
+    return response.data;
+  },
+  delete: async (id: number): Promise<User & { isDeleted?: boolean }> => {
+    const response = await dummyjsonApi.delete(`/users/${id}`);
     return response.data;
   },
 };
