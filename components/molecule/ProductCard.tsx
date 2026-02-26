@@ -8,14 +8,24 @@ import {
   Stack,
   Badge,
   HStack,
+  Button,
+  ButtonGroup,
 } from "@chakra-ui/react";
+import { Pencil, Trash2 } from "lucide-react";
+import { Icon } from "@chakra-ui/react";
 import { Product } from "@/lib/api/dummyjson";
 
 interface ProductCardProps {
   product: Product;
+  onEdit?: (product: Product) => void;
+  onDelete?: (product: Product) => void;
 }
 
-export const ProductCard = ({ product }: ProductCardProps) => {
+export const ProductCard = ({
+  product,
+  onEdit,
+  onDelete,
+}: ProductCardProps) => {
   return (
     <Box
       borderWidth="1px"
@@ -49,6 +59,32 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           <Text fontSize="xs" color="fg.subtle">
             Brand: {product.brand}
           </Text>
+          {(onEdit || onDelete) && (
+            <ButtonGroup size="sm" mt={2}>
+              {onEdit && (
+                <Button
+                  onClick={() => onEdit(product)}
+                  colorPalette="blue"
+                  variant="outline"
+                  gap={2}
+                >
+                  <Icon as={Pencil} boxSize={4} />
+                  Edit
+                </Button>
+              )}
+              {onDelete && (
+                <Button
+                  onClick={() => onDelete(product)}
+                  colorPalette="red"
+                  variant="outline"
+                  gap={2}
+                >
+                  <Icon as={Trash2} boxSize={4} />
+                  Delete
+                </Button>
+              )}
+            </ButtonGroup>
+          )}
         </Stack>
       </Box>
     </Box>

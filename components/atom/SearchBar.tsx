@@ -32,6 +32,7 @@ export function SearchBar() {
       />
       <input
         type="text"
+        color="white"
         placeholder="Search 800,000+ games..."
         className={`w-full pl-10 pr-4 py-2 bg-gray-900 border border-gray-800 ${colorTokens.text.light} ${radiusTokens.md} focus:outline-none focus:border-cyan-500 transition-colors`}
         value={query}

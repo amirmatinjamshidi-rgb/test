@@ -14,26 +14,26 @@ import { radiusTokens } from "@/Design-System/tokens";
 
 type SelectProps<T> =
   | {
-      options: Array<SelectOption<T> | SelectGroup<T>>;
-      placeholder?: string;
-      multiple: true;
-      searchable?: boolean;
-      value?: T[];
-      onChange?: React.Dispatch<React.SetStateAction<T[]>>;
-    }
+    options: Array<SelectOption<T> | SelectGroup<T>>;
+    placeholder?: string;
+    multiple: true;
+    searchable?: boolean;
+    value?: T[];
+    onChange?: React.Dispatch<React.SetStateAction<T[]>>;
+  }
   | {
-      options: Array<SelectOption<T> | SelectGroup<T>>;
-      placeholder?: string;
-      multiple?: false | undefined;
-      searchable?: boolean;
-      value?: T;
-      onChange?: React.Dispatch<React.SetStateAction<T>>;
-    };
+    options: Array<SelectOption<T> | SelectGroup<T>>;
+    placeholder?: string;
+    multiple?: false | undefined;
+    searchable?: boolean;
+    value?: T;
+    onChange?: React.Dispatch<React.SetStateAction<T>>;
+  };
 
 export function Select<T extends string | number | object>({
   options,
   placeholder = "Select...",
-  multiple = false,
+  multiple = true,
   searchable = false,
   value,
   onChange,
@@ -137,7 +137,10 @@ export function Select<T extends string | number | object>({
 
   const selectAll = () => {
     if (!multiple) return;
-    flatOptions.filter((opt) => !opt.disabled).map((opt) => opt.value) as T[];
+    const values = flatOptions
+      .filter((opt) => !opt.disabled)
+      .map((opt) => opt.value) as T[];
+    setValue(values);
   };
 
   const clearAll = () => {
@@ -146,7 +149,6 @@ export function Select<T extends string | number | object>({
 
   return (
     <Listbox
-      by="id"
       value={selectedValue}
       onChange={setValue}
       multiple={multiple}
@@ -257,8 +259,8 @@ export function Select<T extends string | number | object>({
                               "cursor-pointer flex justify-between items-center text-sm px-2 py-1 rounded-md h-full",
                               active && colorTokens.background.hover,
                               selected &&
-                                colorTokens.background.selected +
-                                  " font-semibold",
+                              colorTokens.background.selected +
+                              " font-semibold",
                             )
                           }
                         >

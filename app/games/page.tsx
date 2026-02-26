@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { GamesGallery } from "@/components/organism/game/GameGalley";
 import { colorTokens, typographyTokens } from "@/Design-System/tokens";
 import gamesData from "@/lib/utils/apiReplaced.json";
@@ -45,6 +46,12 @@ export default async function GamesPage({
   return (
     <main className="container mx-auto px-4 py-8">
       <header className="mb-8">
+        <Link
+          href="/"
+          className={`text-sm ${colorTokens.text.accent} hover:underline mb-4 inline-block`}
+        >
+          ← Back to main menu
+        </Link>
         <h1 className={typographyTokens.heading}>Browse Games</h1>
         <p className={colorTokens.text.secondary}>
           Discover your next favorite title

@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { colorTokens, typographyTokens } from "@/Design-System/tokens";
 import { Select } from "@/components/organism/select/select";
 export default function SelectTestPage() {
@@ -69,6 +70,12 @@ export default function SelectTestPage() {
     <div
       className={`${colorTokens.background.dark} min-h-screen flex flex-col items-center justify-start p-10 space-y-10`}
     >
+      <Link
+        href="/"
+        className={`text-sm ${colorTokens.text.accent} hover:underline self-start`}
+      >
+        ← Back to main menu
+      </Link>
       <h1 className={`${typographyTokens.heading} ${colorTokens.text.light}`}>
         3rd task
       </h1>

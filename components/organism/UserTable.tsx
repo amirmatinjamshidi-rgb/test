@@ -8,14 +8,24 @@ import {
   Stack,
   Text,
   Badge,
+  Button,
+  ButtonGroup,
 } from "@chakra-ui/react";
+import { Icon } from "@chakra-ui/react";
+import { Pencil, Trash2 } from "lucide-react";
 import { User } from "@/lib/api/dummyjson";
 
 interface UserTableProps {
   users: User[];
+  onEdit?: (user: User) => void;
+  onDelete?: (user: User) => void;
 }
 
-export const UserTable = ({ users }: UserTableProps) => {
+export const UserTable = ({
+  users,
+  onEdit,
+  onDelete,
+}: UserTableProps) => {
   return (
     <Box overflowX="auto" borderWidth="1px" borderRadius="lg" bg="bg.panel">
       <Table.Root size="md">
@@ -25,6 +35,9 @@ export const UserTable = ({ users }: UserTableProps) => {
             <Table.ColumnHeader>Email</Table.ColumnHeader>
             <Table.ColumnHeader>Role</Table.ColumnHeader>
             <Table.ColumnHeader>Company</Table.ColumnHeader>
+            {(onEdit || onDelete) && (
+              <Table.ColumnHeader>Actions</Table.ColumnHeader>
+            )}
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -62,6 +75,34 @@ export const UserTable = ({ users }: UserTableProps) => {
                   </Text>
                 </Stack>
               </Table.Cell>
+              {(onEdit || onDelete) && (
+                <Table.Cell>
+                  <ButtonGroup size="sm">
+                    {onEdit && (
+                      <Button
+                        onClick={() => onEdit(user)}
+                        colorPalette="blue"
+                        variant="outline"
+                        gap={2}
+                      >
+                        <Icon as={Pencil} boxSize={4} />
+                        Edit
+                      </Button>
+                    )}
+                    {onDelete && (
+                      <Button
+                        onClick={() => onDelete(user)}
+                        colorPalette="red"
+                        variant="outline"
+                        gap={2}
+                      >
+                        <Icon as={Trash2} boxSize={4} />
+                        Delete
+                      </Button>
+                    )}
+                  </ButtonGroup>
+                </Table.Cell>
+              )}
             </Table.Row>
           ))}
         </Table.Body>

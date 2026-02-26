@@ -8,13 +8,13 @@ const mockProduct = {
   title: "Test Product",
   description: "Test Description",
   price: 99.99,
-  thumbnail: "https://example.com/image.jpg",
+  thumbnail: "/file.svg",
   category: "test-category",
   brand: "test-brand",
   discountPercentage: 10,
   rating: 4.5,
   stock: 50,
-  images: ["https://example.com/image.jpg"],
+  images: ["/file.svg"],
 };
 
 describe("ProductCard", () => {
